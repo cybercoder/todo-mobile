@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {getTodoListAction} from '../../redux/actions';
+import TodoList from './todoList';
 export default function Home(): any {
   const dispatch = useDispatch();
 
@@ -11,8 +12,12 @@ export default function Home(): any {
   }, [dispatch]);
 
   return (
-    <View>
-      <Text>{JSON.stringify(todo)}</Text>
+    <View
+      style={{
+        paddingHorizontal: 15,
+        paddingTop: 10,
+      }}>
+      <TodoList data={todo} />
     </View>
   );
 }

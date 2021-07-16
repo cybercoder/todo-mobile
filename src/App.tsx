@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import 'react-native-gesture-handler';
 import Home from './screens/Home';
-
+import Toast from 'react-native-toast-message';
 import {applyMiddleware, createStore} from 'redux';
 import {Provider as ReduxStoreProvider} from 'react-redux';
 import rootReducer from './redux/reducers';
@@ -32,6 +32,7 @@ export default function App(): any {
           />
         </MainStack.Navigator>
       </NavigationContainer>
+      <Toast ref={ref => Toast.setRef(ref)} />
     </ReduxStoreProvider>
   );
 }
