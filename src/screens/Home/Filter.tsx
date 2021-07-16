@@ -60,10 +60,10 @@ const FilterContainer = styled.View`
 
 const CircleBullet = styled.View`
   background-color: ${props => props.color};
-  height: 20;
-  width: 20;
+  height: 20px;
+  width: 20px;
   margin-end: 5px;
-  border-radius: 10;
+  border-radius: 10px;
 `;
 
 const Caption = styled.Text`
