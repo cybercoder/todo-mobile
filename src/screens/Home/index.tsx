@@ -1,14 +1,17 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {getTodoListAction} from '../../redux/actions';
 import TodoList from './todoList';
-export default function Home(): any {
-  const dispatch = useDispatch();
 
+export default function Home(): any {
+  const dispatch: Promise = useDispatch();
+  const [loading, showLoading] = useState(false);
   const {todo}: any = useSelector(state => state);
+
   useEffect(() => {
-    dispatch(getTodoListAction());
+    showLoading(true);
+    dispatch(getTodoListAction()).then(() => showLoading(false));
   }, [dispatch]);
 
   return (
@@ -17,7 +20,7 @@ export default function Home(): any {
         paddingHorizontal: 15,
         paddingTop: 10,
       }}>
-      <TodoList data={todo} />
+      {loading ? <Text>Loading...</Text> : <TodoList data={todo} />}
     </View>
   );
 }

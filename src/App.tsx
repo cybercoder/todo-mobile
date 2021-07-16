@@ -9,6 +9,7 @@ import {Provider as ReduxStoreProvider} from 'react-redux';
 import rootReducer from './redux/reducers';
 import thunk from 'redux-thunk';
 import {StatusBar} from 'react-native';
+import ToDo from './screens/Home/todo';
 
 const MainStack = createStackNavigator();
 
@@ -32,6 +33,7 @@ export default function App(): any {
             component={Home}
             options={{headerTitle: 'To-do App'}}
           />
+          <MainStack.Screen name="todoItem" component={ToDo} />
         </MainStack.Navigator>
       </NavigationContainer>
       <Toast ref={ref => Toast.setRef(ref)} />

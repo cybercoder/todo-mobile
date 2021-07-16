@@ -1,9 +1,11 @@
 import React from 'react';
 import {FlatList, TouchableOpacity, Text} from 'react-native';
-
-export default function TodoList({data}: any): any {
+import {useNavigation} from '@react-navigation/core';
+export default React.memo(function TodoList({data}: any): any {
+  const navigation = useNavigation();
   const renderItem = ({item}: any) => (
-    <TouchableOpacity onPress={() => {}}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('todoItem', {id: item.id})}>
       <Text
         style={{
           color: 'white',
@@ -26,4 +28,4 @@ export default function TodoList({data}: any): any {
       keyExtractor={(x: any) => x.id.toString()}
     />
   );
-}
+});
